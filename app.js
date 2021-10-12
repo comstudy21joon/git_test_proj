@@ -1,5 +1,14 @@
-console.log("hello world");
+const http = require("http");
+const express = require("express");
+const app = express();
+const route = express.Router();
 
-console.log("i like a man who is sweet to me!");
+app.route("/").get((req, res) => {
+  res.end("<h1>Hello world!</h1>");
+});
 
-console.log("new line");
+app.use("/", route);
+const server = http.createServer(app);
+server.listen(3000, () => {
+  console.log("run server on http://localhost:3000");
+});
